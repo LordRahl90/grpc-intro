@@ -36,4 +36,13 @@ func main() {
 
 		fmt.Printf("\nUser Details:\nName: %s\nAge: %d\nID: %d\n", r.GetName(), r.GetAge(), r.GetId())
 	}
+
+	params := &pb.GetUsersParams{}
+	r, err := c.GetUsers(ctx, params)
+	if err != nil {
+		log.Fatal("an error occurred: %w", err)
+	}
+
+	log.Printf("\n USER LIST\n")
+	fmt.Printf("GETUSERS: %+v\n\n", r.GetUsers())
 }
